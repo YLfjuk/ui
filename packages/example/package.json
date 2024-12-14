@@ -1,0 +1,41 @@
+{
+    "name": "@ylfjuk/example",
+    "version": "0.0.0",
+    "author": "YLfjuk",
+    "type": "module",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/YLfjuk/template-monorepo.git",
+        "directory": "packages/example"
+    },
+    "keywords": [
+        "ylfjuk",
+        "template",
+        "example"
+    ],
+    "files": [
+        "dist"
+    ],
+    "main": "dist/index.cjs",
+    "module": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "exports": {
+        ".": {
+            "require": "./dist/index.cjs",
+            "import": "./dist/index.js"
+        }
+    },
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "test": "npm run test:types",
+    "test:types": "tsc --project tsconfig.test.json",
+    "devDependencies": {
+        "@ylfjuk/tsconfigs": "^0.0.6",
+        "tsup": "^8.3.0",
+        "typescript": "^5.6.3"
+    },
+    "peerDependencies": {
+        "typescript": "^5.5.4"
+    }
+}
