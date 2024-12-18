@@ -1,0 +1,24 @@
+{
+    "name": "@ylfjuk/webc",
+    "private": true,
+    "version": "0.0.0",
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "build": "tsc && vite build",
+        "preview": "vite preview",
+        "test": "npm run test:types",
+        "test:types": "tsc --project tsconfig.test.json"
+    },
+    "dependencies": {
+        "@ylfjuk-ui/core": "^0.0.1",
+        "lit": "^3.2.1"
+    },
+    "devDependencies": {
+        "@types/node": "^22.10.2",
+        "@ylfjuk-core/types": "^0.0.9",
+        "@ylfjuk/tsconfigs": "^0.0.6",
+        "typescript": "~5.7.2",
+        "vite": "^6.0.3"
+    }
+}
