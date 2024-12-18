@@ -28,8 +28,8 @@
         }
     },
     "scripts": {
-        "dev": "tsup --watch",
-        "dev:v": "vite",
+        "dev": "vite",
+        "dev:p": "tsup --watch",
         "build": "tsup",
         "build:v": "tsc && vite build",
         "preview": "vite preview",
