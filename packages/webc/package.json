@@ -1,22 +1,50 @@
 {
     "name": "@ylfjuk/webc",
-    "version": "0.0.2",
+    "version": "0.0.3",
+    "description": "The web components package",
+    "author": "YLfjuk",
     "type": "module",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/YLfjuk/core.git",
+        "directory": "packages/webc"
+    },
+    "keywords": [
+        "ylfjuk",
+        "ui",
+        "webcomponents"
+    ],
+    "files": [
+        "dist"
+    ],
+    "main": "dist/index.cjs",
+    "module": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "exports": {
+        ".": {
+            "import": "./dist/index.js",
+            "require": "./dist/index.cjs"
+        }
+    },
     "scripts": {
-        "dev": "vite",
-        "build": "tsc && vite build",
+        "dev": "tsup --watch",
+        "dev:v": "vite",
+        "build": "tsup",
+        "build:v": "tsc && vite build",
         "preview": "vite preview",
         "test": "npm run test:types",
         "test:types": "tsc --project tsconfig.test.json"
     },
     "dependencies": {
-        "@ylfjuk-ui/core": "^0.0.1",
+        "@ylfjuk-ui/core": "^0.0.2",
         "lit": "^3.2.1"
     },
     "devDependencies": {
         "@types/node": "^22.10.2",
         "@ylfjuk-core/types": "^0.0.9",
         "@ylfjuk/tsconfigs": "^0.0.6",
+        "tsup": "^8.3.5",
         "typescript": "~5.7.2",
         "vite": "^6.0.3"
     }

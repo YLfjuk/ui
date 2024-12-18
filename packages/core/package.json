@@ -1,11 +1,12 @@
 {
     "name": "@ylfjuk-ui/core",
-    "version": "0.0.1",
+    "description": "The core ui package",
+    "version": "0.0.2",
     "author": "YLfjuk",
     "license": "MIT",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/YLfjuk/template-monorepo.git",
+        "url": "git+https://github.com/YLfjuk/ui.git",
         "directory": "packages/core"
     },
     "keywords": [

@@ -7,7 +7,7 @@
     "license": "MIT",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/YLfjuk/template-monorepo.git"
+        "url": "git+https://github.com/YLfjuk/ui"
     },
     "scripts": {
         "release": "npm run build && changeset publish",
