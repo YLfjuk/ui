@@ -1,1 +1,1 @@
-export * from './components/cursor-tracker';
+export * from './components/mouse-tracker';

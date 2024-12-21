@@ -25,5 +25,5 @@
         /* Override */
         "isolatedDeclarations": false
     },
-    "include": ["src", "src/utils/display.ts"]
+    "include": ["src", "src/components/mouse-tracker/consts.ts"]
 }

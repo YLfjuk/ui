@@ -12,11 +12,13 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 
-    /* --cursor-tracker-primary-bg: #2a2a2a;
-    --cursor-tracker-primary-text: #ffffff;
-    --cursor-tracker-secondary-bg: rgba(42, 42, 42, 0.9);
-    --cursor-tracker-border-color: #404040;
-    --cursor-tracker-shadow-color: rgba(0, 0, 0, 0.3); */
+    /* --mouse-tracker-scale: 0.75;
+    --mouse-tracker-primary-bg: #3c4eb6;
+    --mouse-tracker-primary-text: #ffffff;
+    --mouse-tracker-secondary-bg: rgba(88, 119, 204, 0.9);
+    --mouse-tracker-border-color: #404040;
+    --mouse-tracker-shadow-color: rgba(0, 0, 0, 0.3);
+    --mouse-tracker-pin-fill: aliceblue; */
 }
 
 body {
@@ -36,10 +38,11 @@ body {
         color: #213547;
         background-color: #ffffff;
 
-        /* --cursor-tracker-primary-bg: #ffffff;
-        --cursor-tracker-primary-text: #333333;
-        --cursor-tracker-secondary-bg: rgba(255, 255, 255, 0.9);
-        --cursor-tracker-border-color: #e2e2e2;
-        --cursor-tracker-shadow-color: rgba(0, 0, 0, 0.1); */
+        /* --mouse-tracker-primary-bg: #ffffff;
+        --mouse-tracker-primary-text: #333333;
+        --mouse-tracker-secondary-bg: rgba(255, 255, 255, 0.9);
+        --mouse-tracker-border-color: #e2e2e2;
+        --mouse-tracker-shadow-color: rgba(0, 0, 0, 0.1);
+        --mouse-tracker-pin-fill: aliceblue; */
     }
 }

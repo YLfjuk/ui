@@ -1,10 +1,11 @@
 import type { ValueOf } from '@ylfjuk/core';
 
 export const DisplayInfo = {
-    Offset: 'offset',
+    Mouse: 'mouse',
     Client: 'client',
     Page: 'page',
     Screen: 'screen',
+    Offset: 'offset',
     Movement: 'movement',
 } as const;
 
