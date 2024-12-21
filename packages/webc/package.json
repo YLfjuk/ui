@@ -1,6 +1,6 @@
 {
     "name": "@ylfjuk/webc",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "description": "The web components package",
     "author": "YLfjuk",
     "type": "module",
@@ -37,7 +37,7 @@
         "test:types": "tsc --project tsconfig.test.json"
     },
     "dependencies": {
-        "@ylfjuk-ui/core": "^0.0.2",
+        "@ylfjuk-ui/core": "^0.0.3",
         "@ylfjuk/core": "^0.0.12",
         "lit": "^3.2.1"
     },
