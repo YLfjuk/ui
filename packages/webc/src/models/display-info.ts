@@ -1,4 +1,4 @@
-import type { ValueOf } from '@ylfjuk-core/types';
+import type { ValueOf } from '@ylfjuk/core';
 
 export const DisplayInfo = {
     Offset: 'offset',
