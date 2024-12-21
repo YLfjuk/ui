@@ -12,11 +12,11 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 
-    /* --primary-bg: #2a2a2a;
-    --primary-text: #ffffff;
-    --secondary-bg: rgba(42, 42, 42, 0.9);
-    --border-color: #404040;
-    --shadow-color: rgba(0, 0, 0, 0.3); */
+    /* --cursor-tracker-primary-bg: #2a2a2a;
+    --cursor-tracker-primary-text: #ffffff;
+    --cursor-tracker-secondary-bg: rgba(42, 42, 42, 0.9);
+    --cursor-tracker-border-color: #404040;
+    --cursor-tracker-shadow-color: rgba(0, 0, 0, 0.3); */
 }
 
 body {
@@ -36,10 +36,10 @@ body {
         color: #213547;
         background-color: #ffffff;
 
-        /* --primary-bg: #ffffff;
-        --primary-text: #333333;
-        --secondary-bg: rgba(255, 255, 255, 0.9);
-        --border-color: #e2e2e2;
-        --shadow-color: rgba(0, 0, 0, 0.1); */
+        /* --cursor-tracker-primary-bg: #ffffff;
+        --cursor-tracker-primary-text: #333333;
+        --cursor-tracker-secondary-bg: rgba(255, 255, 255, 0.9);
+        --cursor-tracker-border-color: #e2e2e2;
+        --cursor-tracker-shadow-color: rgba(0, 0, 0, 0.1); */
     }
 }

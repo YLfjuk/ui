@@ -1,4 +1,5 @@
 import { Theme } from '@ylfjuk-ui/core';
+import { toggle } from '@ylfjuk/core';
 import { LitElement, css, html, nothing, svg } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
@@ -14,12 +15,6 @@ const tag = 'cursor-tracker';
 export class CursorTracker extends LitElement {
     // #region Styles
     static override styles = css`
-        @supports (color: oklch(0.55 0.22 33.58)) {
-            :host {
-                --intrnl-pin-fill: oklch(0.55 0.22 33.58);
-            }
-        }
-
         :host {
             --intrnl-primary-bg: #2a2a2a;
             --intrnl-primary-text: #ffffff;
@@ -29,6 +24,10 @@ export class CursorTracker extends LitElement {
 
             --intrnl-pin-fill: darkred;
 
+            --intrnl-theme-system-shadow: teal;
+            --intrnl-theme-light-shadow: gold;
+            --intrnl-theme-dark-shadow: rgb(50 151 204);
+
             opacity: 0.6;
             position: absolute;
 
@@ -36,6 +35,12 @@ export class CursorTracker extends LitElement {
             right: 0;
             bottom: 0;
             margin: 10px;
+        }
+
+        @supports (color: oklch(0.55 0.22 33.58)) {
+            :host {
+                --intrnl-pin-fill: oklch(0.55 0.22 33.58);
+            }
         }
 
         :host([pinned]),
@@ -71,35 +76,13 @@ export class CursorTracker extends LitElement {
             --intrnl-shadow-color: rgba(0, 0, 0, 0.1);
 
             --intrnl-pin-fill: orangered;
-        }
-
-        .tracker {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-            background-color: var(--secondary-bg, var(--intrnl-secondary-bg));
-            border: 1px solid var(--border-color, var(--intrnl-border-color));
-            border-radius: 8px;
-            padding: 6px;
-            box-shadow: 0 2px 4px
-                var(--shadow-color, var(--intrnl-shadow-color));
-            color: var(
-                --cursor-tracker-primary-text,
-                var(--intrnl-primary-text)
-            );
-            min-width: 115px;
-            transition: all 0.3s ease;
-        }
-
-        .controls {
-            display: none;
-            gap: 8px;
+            --intrnl-theme-system-shadow: teal;
         }
 
         button {
             display: flex;
             justify-content: center;
-            background: var(
+            background-color: var(
                 --cursor-tracker-primary-bg,
                 var(--intrnl-primary-bg)
             );
@@ -117,6 +100,33 @@ export class CursorTracker extends LitElement {
 
         button:hover {
             opacity: 1;
+        }
+
+        .tracker {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            background-color: var(
+                --cursor-tracker-secondary-bg,
+                var(--intrnl-secondary-bg)
+            );
+            border: 1px solid
+                var(--cursor-tracker-border-color, var(--intrnl-border-color));
+            border-radius: 8px;
+            padding: 6px;
+            box-shadow: 0 2px 4px
+                var(--cursor-tracker-shadow-color, var(--intrnl-shadow-color));
+            color: var(
+                --cursor-tracker-primary-text,
+                var(--intrnl-primary-text)
+            );
+            min-width: 115px;
+            transition: all 0.3s ease;
+        }
+
+        .controls {
+            display: none;
+            gap: 8px;
         }
 
         .theme .system,
@@ -146,15 +156,33 @@ export class CursorTracker extends LitElement {
         }
 
         .theme.system:hover .system {
-            filter: drop-shadow(0 0 0.1em rgb(120, 120, 120));
+            filter: drop-shadow(
+                0 0 0.1em
+                    var(
+                        --cursor-tracker-theme-system-shadow,
+                        var(--intrnl-theme-system-shadow)
+                    )
+            );
         }
 
         .theme.light:hover .light {
-            filter: drop-shadow(0 0 0.2em gold);
+            filter: drop-shadow(
+                0 0 0.2em
+                    var(
+                        --cursor-tracker-theme-light-shadow,
+                        var(--intrnl-theme-light-shadow)
+                    )
+            );
         }
 
         .theme.dark:hover .dark {
-            filter: drop-shadow(0 0 0.1em rgb(50 151 204));
+            filter: drop-shadow(
+                0 0 0.1em
+                    var(
+                        --cursor-tracker-theme-dark-shadow,
+                        var(--intrnl-theme-dark-shadow)
+                    )
+            );
         }
 
         .info {
@@ -207,10 +235,6 @@ export class CursorTracker extends LitElement {
                 .expanded:hover {
                     filter: drop-shadow(0 0 0.2em black);
                 }
-
-                .theme.system:hover .system {
-                    filter: drop-shadow(0 0 0.1em black);
-                }
             }
         }
 
@@ -219,16 +243,12 @@ export class CursorTracker extends LitElement {
                 transition: background-color 0.2s ease, opacity 0.2s ease-in-out;
             }
 
-            .pin,
             .expand,
-            .theme {
-                will-change: filter;
-                transition: filter 300ms;
-            }
-
+            .theme,
             .theme .system,
             .theme .light,
             .theme .dark {
+                will-change: filter;
                 transition: filter 300ms, scale 0.5s ease-in;
             }
         }
@@ -257,7 +277,7 @@ export class CursorTracker extends LitElement {
     private cursorInfo: CursorInfo | null = null;
 
     @state()
-    private currentDisplay: DisplayInfo = DisplayInfo.Offset;
+    private activeDisplay: DisplayInfo = DisplayInfo.Offset;
     // #endregion
 
     // #region Lifecycle
@@ -407,11 +427,11 @@ export class CursorTracker extends LitElement {
     #renderInfo() {
         if (this.expanded) {
             return html`${Object.values(DisplayInfo).map((display) =>
-                this.#renderInfoType(display, display === this.currentDisplay)
+                this.#renderInfoType(display, display === this.activeDisplay)
             )}`;
         }
 
-        return this.#renderInfoType(this.currentDisplay);
+        return this.#renderInfoType(this.activeDisplay);
     }
 
     #renderInfoType(display: DisplayInfo, highlight = false) {
@@ -480,9 +500,7 @@ export class CursorTracker extends LitElement {
 
     #toggleTheme() {
         const themes = Object.values(Theme);
-        const currThemeIdx = themes.findIndex((theme) => theme === this.theme);
-        const nextThemeIdx = (currThemeIdx + 1) % themes.length;
-        const nextTheme = themes[nextThemeIdx];
+        const [nextTheme] = toggle(themes, this.theme);
 
         if (nextTheme) {
             this.theme = nextTheme;
@@ -494,21 +512,19 @@ export class CursorTracker extends LitElement {
 
     #toggleDisplayInfo(display?: DisplayInfo) {
         if (this.expanded && display) {
-            this.currentDisplay = display;
+            this.activeDisplay = display;
             return;
         }
 
         const displays = Object.values(DisplayInfo);
-        const currentDisplayIdx = displays.indexOf(this.currentDisplay);
-        const nextThemeIdx = (currentDisplayIdx + 1) % displays.length;
-        const nextDisplay = displays[nextThemeIdx];
+        const [nextDisplay] = toggle(displays, this.activeDisplay);
 
         if (nextDisplay) {
-            this.currentDisplay = nextDisplay;
+            this.activeDisplay = nextDisplay;
             return;
         }
 
-        this.currentDisplay = DisplayInfo.Offset;
+        this.activeDisplay = DisplayInfo.Offset;
     }
     // #endregion
 }
