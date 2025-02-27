@@ -38,14 +38,14 @@
     },
     "dependencies": {
         "@ylfjuk-ui/core": "^0.0.3",
-        "@ylfjuk/core": "^0.0.12",
+        "@ylfjuk/core": "^0.0.14",
         "lit": "^3.2.1"
     },
     "devDependencies": {
-        "@types/node": "^22.10.2",
+        "@types/node": "^22.13.5",
         "@ylfjuk/tsconfigs": "^0.0.6",
-        "tsup": "^8.3.5",
-        "typescript": "~5.7.2",
-        "vite": "^6.0.5"
+        "tsup": "^8.4.0",
+        "typescript": "~5.7.3",
+        "vite": "^6.2.0"
     }
 }
