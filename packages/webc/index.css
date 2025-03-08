@@ -22,8 +22,10 @@
 }
 
 body {
+    padding-inline: 150px;
     margin: 0;
     display: flex;
+    flex-direction: column;
     place-items: center;
     flex-grow: 1;
 }
@@ -31,6 +33,14 @@ body {
 .title {
     margin-left: auto;
     margin-right: auto;
+}
+
+mouse-tracker {
+    right: 0;
+    bottom: 0;
+    margin: 10px;
+
+    position: fixed;
 }
 
 @media (prefers-color-scheme: light) {

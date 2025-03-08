@@ -44,6 +44,16 @@ export class MouseTracker extends LitElement {
     // #endregion
 
     // #region Lifecycle
+    override connectedCallback() {
+        super.connectedCallback();
+        window.addEventListener('mousemove', this.#onMouseMove);
+    }
+
+    override disconnectedCallback() {
+        super.disconnectedCallback();
+        window.removeEventListener('mousemove', this.#onMouseMove);
+    }
+
     override attributeChangedCallback(
         name: string,
         oldVal: string | null,
@@ -64,16 +74,6 @@ export class MouseTracker extends LitElement {
         } else {
             super.attributeChangedCallback(name, oldVal, Theme.System);
         }
-    }
-
-    override connectedCallback() {
-        super.connectedCallback();
-        window.addEventListener('mousemove', this.#onMouseMove);
-    }
-
-    override disconnectedCallback() {
-        window.removeEventListener('mousemove', this.#onMouseMove);
-        super.disconnectedCallback();
     }
     // #endregion
 

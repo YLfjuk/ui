@@ -1,46 +1,39 @@
 import { css } from 'lit';
 
-const bgColorPrimaryVar = css`var(--mouse-tracker-primary-bg, var(--intrnl-primary-bg))`;
-const bgColorSecondaryVar = css`var(--mouse-tracker-secondary-bg, var(--intrnl-secondary-bg));`;
-const textColorPrimaryVar = css`var(--mouse-tracker-primary-text, var(--intrnl-primary-text))`;
-const borderColorVar = css`var(--mouse-tracker-border-color, var(--intrnl-border-color))`;
-const shadowColorVar = css`var(--mouse-tracker-shadow-color, var(--intrnl-shadow-color))`;
+const bgPrimaryVar = css`var(--mouse-tracker-primary-bg, var(--__primary-bg))`;
+const bgSecondaryVar = css`var(--mouse-tracker-secondary-bg, var(--__secondary-bg));`;
+const textPrimaryVar = css`var(--mouse-tracker-primary-text, var(--__primary-text))`;
+const borderColorVar = css`var(--mouse-tracker-border-color, var(--__border-color))`;
+const shadowColorVar = css`var(--mouse-tracker-shadow-color, var(--__shadow-color))`;
 
-const pinFillColorVar = css`var(--mouse-tracker-pin-fill, var(--intrnl-pin-fill))`;
-const systemShadowColorVar = css`var(--mouse-tracker-theme-system-shadow, var(--intrnl-theme-system-shadow))`;
-const lightShadowColorVar = css`var(--mouse-tracker-theme-light-shadow, var(--intrnl-theme-light-shadow))`;
-const darkShadowColorVar = css`var(--mouse-tracker-theme-dark-shadow, var(--intrnl-theme-dark-shadow))`;
+const pinFillVar = css`var(--mouse-tracker-pin-fill, var(--__pin-fill))`;
+const systemShadowVar = css`var(--mouse-tracker-theme-system-shadow, var(--__theme-system-shadow))`;
+const lightShadowColorVar = css`var(--mouse-tracker-theme-light-shadow, var(--__theme-light-shadow))`;
+const darkShadowVar = css`var(--mouse-tracker-theme-dark-shadow, var(--__theme-dark-shadow))`;
 
 const scaleVar = css`var(--mouse-tracker-scale, 1)`;
 
 export const styles = css`
     :host {
-        --intrnl-primary-bg: #2a2a2a;
-        --intrnl-secondary-bg: #2a2a2ae6;
-        --intrnl-primary-text: #ffffff;
-        --intrnl-border-color: #404040;
-        --intrnl-shadow-color: rgba(0, 0, 0, 0.3);
+        --__primary-bg: #2a2a2a;
+        --__secondary-bg: #2a2a2ae6;
+        --__primary-text: #ffffff;
+        --__border-color: #404040;
+        --__shadow-color: rgba(0, 0, 0, 0.3);
 
-        --intrnl-pin-fill: darkred;
+        --__pin-fill: darkred;
 
-        --intrnl-theme-system-shadow: teal;
-        --intrnl-theme-light-shadow: gold;
-        --intrnl-theme-dark-shadow: rgb(50 151 204);
+        --__theme-system-shadow: teal;
+        --__theme-light-shadow: gold;
+        --__theme-dark-shadow: rgb(50 151 204);
 
         opacity: 0.6;
-        position: absolute;
-
-        /* TODO: change into a property */
-        right: 0;
-        bottom: 0;
-        margin: 10px;
-
         font-size: calc(1rem * ${scaleVar});
     }
 
     @supports (color: oklch(0.55 0.22 33.58)) {
         :host {
-            --intrnl-pin-fill: oklch(0.55 0.22 33.58);
+            --__pin-fill: oklch(0.55 0.22 33.58);
         }
     }
 
@@ -69,25 +62,25 @@ export const styles = css`
     }
 
     :host([theme='light']) {
-        --intrnl-primary-bg: #ffffff;
-        --intrnl-primary-text: #333333;
-        --intrnl-border-color: #e2e2e2;
+        --__primary-bg: #ffffff;
+        --__primary-text: #333333;
+        --__border-color: #e2e2e2;
 
-        --intrnl-secondary-bg: rgba(255, 255, 255, 0.9);
-        --intrnl-shadow-color: rgba(0, 0, 0, 0.1);
+        --__secondary-bg: rgba(255, 255, 255, 0.9);
+        --__shadow-color: rgba(0, 0, 0, 0.1);
 
-        --intrnl-pin-fill: orangered;
-        --intrnl-theme-system-shadow: teal;
+        --__pin-fill: orangered;
+        --__theme-system-shadow: teal;
     }
 
     button {
         display: flex;
         justify-content: center;
-        background-color: ${bgColorPrimaryVar};
+        background-color: ${bgPrimaryVar};
         border: 1px solid ${borderColorVar};
         border-radius: calc(4px * ${scaleVar});
         padding: calc(2px * ${scaleVar}) calc(4px * ${scaleVar});
-        color: ${textColorPrimaryVar};
+        color: ${textPrimaryVar};
         cursor: pointer;
         opacity: 0.8;
     }
@@ -100,12 +93,12 @@ export const styles = css`
         display: flex;
         flex-direction: column;
         gap: calc(4px * ${scaleVar});
-        background-color: ${bgColorSecondaryVar};
+        background-color: ${bgSecondaryVar};
         border: 1px solid ${borderColorVar};
         border-radius: calc(8px * ${scaleVar});
         padding: calc(6px * ${scaleVar});
         box-shadow: 0 2px 4px ${shadowColorVar};
-        color: ${textColorPrimaryVar};
+        color: ${textPrimaryVar};
         min-width: calc(115px * ${scaleVar});
         transition: all 0.3s ease;
     }
@@ -120,11 +113,11 @@ export const styles = css`
     }
 
     :host([pinned]) .pin {
-        fill: ${pinFillColorVar};
+        fill: ${pinFillVar};
     }
 
     .pin:hover {
-        filter: drop-shadow(0 0 0.2em ${pinFillColorVar});
+        filter: drop-shadow(0 0 0.2em ${pinFillVar});
     }
 
     :host([pinned]) .pin:hover {
@@ -148,7 +141,7 @@ export const styles = css`
     }
 
     .theme.system:hover .system {
-        filter: drop-shadow(0 0 0.1em ${systemShadowColorVar});
+        filter: drop-shadow(0 0 0.1em ${systemShadowVar});
     }
 
     .theme.light:hover .light {
@@ -156,7 +149,7 @@ export const styles = css`
     }
 
     .theme.dark:hover .dark {
-        filter: drop-shadow(0 0 0.1em ${darkShadowColorVar});
+        filter: drop-shadow(0 0 0.1em ${darkShadowVar});
     }
 
     .pin,
@@ -202,14 +195,14 @@ export const styles = css`
 
     @media (prefers-color-scheme: light) {
         :host([theme='system']) {
-            --intrnl-primary-bg: #ffffff;
-            --intrnl-primary-text: #333333;
-            --intrnl-border-color: #e2e2e2;
+            --__primary-bg: #ffffff;
+            --__primary-text: #333333;
+            --__border-color: #e2e2e2;
 
-            --intrnl-secondary-bg: rgba(255, 255, 255, 0.9);
-            --intrnl-shadow-color: rgba(0, 0, 0, 0.1);
+            --__secondary-bg: rgba(255, 255, 255, 0.9);
+            --__shadow-color: rgba(0, 0, 0, 0.1);
 
-            --intrnl-pin-fill: orangered;
+            --__pin-fill: orangered;
 
             :host([pinned]) .pin:hover {
                 filter: drop-shadow(0 0 0.2em black);
