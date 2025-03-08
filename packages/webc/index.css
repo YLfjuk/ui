@@ -43,6 +43,14 @@ mouse-tracker {
     position: fixed;
 }
 
+scroll-progress-nav {
+    left: 0;
+    bottom: 0;
+    margin: 10px;
+
+    position: fixed;
+}
+
 @media (prefers-color-scheme: light) {
     :root {
         color: #213547;
