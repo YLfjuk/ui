@@ -7,7 +7,7 @@
     "license": "MIT",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/YLfjuk/core.git",
+        "url": "git+https://github.com/YLfjuk/ui.git",
         "directory": "packages/webc"
     },
     "keywords": [
