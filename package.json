@@ -10,6 +10,7 @@
         "url": "git+https://github.com/YLfjuk/ui"
     },
     "scripts": {
+        "prep:ver": "npx changeset",
         "release": "npm run build && changeset publish",
         "version": "changeset version",
         "build": "turbo run build",
